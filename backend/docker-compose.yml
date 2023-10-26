@@ -1,0 +1,8 @@
+version: '3'
+services:
+  user-dashboard-app:
+    image: user-dashboard-app:1.0
+    ports:
+      - '4000:4000'
+    env_file:
+      - .env
