@@ -1,7 +1,8 @@
-import NextAuth from 'next-auth';
+import { NextApiHandler } from 'next';
+import NextAuth, { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from "next-auth/providers/credentials"
 
-export const handler =  NextAuth({
+const nextAuthOptions: NextAuthOptions = {
   // session: {
   //   strategy: 'jwt',
   // },
@@ -59,6 +60,8 @@ export const handler =  NextAuth({
     // signOut: '/auth/signout',
   }
   // Add other configuration options here
-});
+};
 
-export { handler as GET, handler as POST }
+const handler = (req: any, res: any) => NextAuth(req, res, nextAuthOptions);
+
+export { handler as GET, handler as POST };
