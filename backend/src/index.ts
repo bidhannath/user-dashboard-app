@@ -17,7 +17,7 @@ const firebaseAdminAuth = admin.initializeApp({
 async function initializeDatabase() {
   try {
     await sequelize.authenticate(); // Test the database connection
-    await sequelize.sync(); // Synchronize the models with the database
+    await sequelize.sync({alter: true}); // Synchronize the models with the database
     logger.info('Database connection has been established successfully.');
   } catch (error) {
     logger.error('Unable to connect to the database:', error);

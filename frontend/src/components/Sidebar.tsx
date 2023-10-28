@@ -5,16 +5,17 @@ import Image from 'next/image';
 import logo from '../../public/logo.svg';
 import { usePathname, useRouter } from 'next/navigation';
 import { signIn, signOut, useSession } from 'next-auth/react';
+import { Logo } from './Icons';
 
 const Sidebar = () => {
   const router = useRouter();
   const {status, data: session} = useSession();
   const pathCondition = usePathname().includes('signin');
-  useEffect(() => {
-    if(status === 'unauthenticated') {
-      router.push('/auth/signin')
-    }
-  }, [status]);
+  // useEffect(() => {
+  //   if(status === 'unauthenticated') {
+  //     router.push('/auth/signin')
+  //   }
+  // }, [status, router]);
   if(session && !pathCondition) {
     return (
       <aside
@@ -22,8 +23,12 @@ const Sidebar = () => {
     >
       {/* <!-- SIDEBAR HEADER --> */}
       <div className="flex-row items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
-        <a href="index.html">
-          <Image src={logo} width={180} alt="Logo" />
+        <a href="/">
+          {/* <Image src={logo} width={180} alt="Logo" /> */}
+          <div className='inline-flex items-center gap-2'>
+            <Logo />
+            <span className='text-white dark:text-gray-200'>Dashboard</span>
+          </div>
         </a>
 
         <button
@@ -121,10 +126,11 @@ const Sidebar = () => {
                 <li>
                   <a
                     className="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white"
-                    href="index.html"
+                    href="/"
                     // :className="page === 'ecommerce' && '!text-white'"
-                    >eCommerce</a
-                  >
+                    >
+                      eCommerce
+                  </a>
                 </li>
               </ul>
             </div>
@@ -163,7 +169,7 @@ const Sidebar = () => {
           <li>
             <a
               className="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-              href="profile.html"
+              href="/profile"
               // @click="selected = (selected === 'Profile' ? '':'Profile')"
               // :className="{ 'bg-graydark dark:bg-meta-4': (selected === 'Profile') && (page === 'profile') }"
               // :className="page === 'profile' && 'bg-graydark'"
@@ -268,8 +274,9 @@ const Sidebar = () => {
                     className="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white"
                     href="form-layout.html"
                     // :className="page === 'formLayout' && '!text-white'"
-                    >Form Layout</a
                   >
+                    Form Layout
+                  </a>
                 </li>
               </ul>
             </div>
@@ -569,16 +576,18 @@ const Sidebar = () => {
                     className="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white"
                     href="signin.html"
                     // :className="page === 'signin' && '!text-white'"
-                    >Sign In</a
-                  >
+                    >
+                      Sign In
+                    </a>
                 </li>
                 <li>
                   <a
                     className="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white"
                     href="signup.html"
                     // :className="page === 'signup' && '!text-white'"
-                    >Sign Up</a
-                  >
+                    >
+                    Sign Up
+                    </a>
                 </li>
               </ul>
             </div>
@@ -592,10 +601,10 @@ const Sidebar = () => {
 
     {/* <!-- Promo Box --> */}
     <div
-      className="mx-auto mb-10 w-full max-w-60 rounded-sm border border-strokedark bg-boxdark py-6 px-4 text-center shadow-default">
-      <h3 className="mb-1 font-semibold text-white">TailAdmin Pro</h3>
+      className="mx-auto mb-10 w-full max-w-60 rounded-sm border border-strokedark bg-boxdark py-6 px-6 text-center shadow-default">
+      <h3 className="mb-1 font-semibold text-white">Dashboard Pro</h3>
       <p className="mb-4 text-xs">Get All Dashboards and 300+ UI Elements</p>
-      <a href="https://tailadmin.com/pricing" target="_blank" rel="nofollow"
+      <a href="/" target="_blank" rel="nofollow"
         className="flex items-center justify-center rounded-md bg-primary p-2 text-white hover:bg-opacity-95">
         Purchase Now
       </a>
@@ -605,7 +614,7 @@ const Sidebar = () => {
     </aside>
     );
   }
-  if(!session) {  
+  if(!session && !pathCondition) {  
     return (
       <>
       {!session &&
@@ -616,6 +625,9 @@ const Sidebar = () => {
       }
       </>
     )
+  }
+  if(!session && pathCondition) {  
+    return null;
   }
   return (
     <div>Loading...</div>

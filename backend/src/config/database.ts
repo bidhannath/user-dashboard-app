@@ -1,3 +1,7 @@
+const path = require('path');
+if (!process.env.DB_USER)
+  require('dotenv').config();
+
 module.exports = {
   username: process.env.DB_USER,
   password: process.env.DB_PASS,
@@ -7,10 +11,10 @@ module.exports = {
   port: process.env.DB_PORT,
   logging: false,
   seederStorage: 'sequelize',
-  pool:{
-     max: 10,
-     acquire: 40000,
-     idle: 2000,     
-     evict: 1000
-  }
+  pool: {
+    max: 10,
+    acquire: 40000,
+    idle: 2000,
+    evict: 1000,
+  },
 };

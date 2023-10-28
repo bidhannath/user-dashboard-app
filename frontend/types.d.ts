@@ -1,17 +1,19 @@
 // custom-types.d.ts
-// import { DefaultSession } from "next-auth";
+import { DefaultSession } from "next-auth";
 // import { SessionProviderProps } from "next-auth/react";
 
-// declare module 'next-auth' {
-//   export interface Session extends DefaultSession {
-//     user?: {
-//       name?: string | null
-//       email?: string | null
-//       image?: string | null
-//     }
-//     expires?: ISODateString; // Making 'expires' optional
-//   }
-// }
+declare module 'next-auth' {
+  export interface Session extends DefaultSession {
+    user?: {
+      uid?: string | null,
+      name?: string | null,
+      email?: string | null,
+      image?: string | null,
+    }
+    expires?: ISODateString, // Making 'expires' optional
+    accessToken?: string | null,
+  }
+}
 
 // declare module 'next-auth/react' {
 //   export interface SessionProviderProps {

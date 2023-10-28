@@ -1,6 +1,7 @@
 // firebaseMiddleware.ts
 import 'firebase/auth';
 import { firebaseAdminAuth } from '..';
+import logger from '../config/logger';
 
 const authenticateFirebase = (req: any, res: any, next: any) => {
   const idToken = req.headers.authorization.split(' ')[1];
@@ -12,6 +13,7 @@ const authenticateFirebase = (req: any, res: any, next: any) => {
         next();
       })
       .catch((error: any) => {
+        logger.error(error);
         res.status(403).json({ error: 'Unauthorized', message: error.message || '' });
       });
   } else {

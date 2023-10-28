@@ -29,7 +29,31 @@ const User = sequelize.define(
       allowNull: true,
       unique: true,
     },
-    photoURL: {
+    avatar: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    coverImage: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    bio: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    location: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    dob: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
+    gender: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    relationshipStatus: {
       type: DataTypes.STRING,
       allowNull: true,
     },
