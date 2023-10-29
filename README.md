@@ -58,11 +58,13 @@ To run this project locally, follow these steps:
 
     ```bash
     git clone https://github.com/bidhannath/user-dashboard-app.git
+    ```
 
 2. Change the working directory:
 
     ```bash
     cd user-dashboard
+    ```
 
 ### Backend
 
@@ -70,6 +72,7 @@ To run this project locally, follow these steps:
 
     ```bash
     cd backend
+    ```
 
 4. Add `env` file in the root directory of backend:
 
@@ -87,36 +90,41 @@ To run this project locally, follow these steps:
     FIREBASE_APP_ID=<value>
     FIREBASE_PRIVATE_KEY=<value>
     FIREBASE_PRIVATE_KEY_ID=<value>
+    ```
 
 5. Install backend dependencies:
 
     ```bash
     npm install
-
+    ```
     or
 
     ```bash
     yarn install
-
+    ```
     or
 
     ```bash
     pnpm install
+    ```
 
 6. Start the development server:
 
     ```bash
     npm run dev
+    ```
 
     or
 
     ```bash
     yarn dev
+    ```
 
     or
 
     ```bash
     pnpm dev
+    ```
 
 ### Frontend
 
@@ -124,6 +132,7 @@ To run this project locally, follow these steps:
 
     ```bash
     cd frontend
+    ```
 
 8. Add `env` file in the root directory of frontend:
 
@@ -131,36 +140,41 @@ To run this project locally, follow these steps:
     NEXTAUTH_SECRET=<value>
     NEXT_PUBLIC_API_BASE_URL=<value>
     NEXT_PUBLIC_BASE_PATH=<value>
+    ```
 
 9. Install frontend dependencies:
 
     ```bash
     npm install
+    ```
 
     or
 
     ```bash
     yarn install
-
+    ```
     or
 
     ```bash
     pnpm install
+    ```
 
 10. Start the development server:
 
     ```bash
     npm run dev
+    ```
 
     or
 
     ```bash
     yarn dev
-
+    ```
     or
 
     ```bash
     pnpm dev
+    ```
 
 11. Visit `localhost:3000` in your browser.
 
